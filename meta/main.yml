@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: "David Burel"
+  description: "An Ansible role to install AppArmor on Ubuntu 24"
+  company: ""
+  issue_tracker_url: https://github.com/dafneb/ansible-role-ubuntu24-apparmor/issues
+  license: MIT
+  namespace: dafneb
+  role_name: ubuntu24-apparmor
+  min_ansible_version: "2.12"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - noble
+  galaxy_tags:
+    - system
+    - server
+    - aparmor
+    - security
+    - ubuntu24
+    - ubuntu
+dependencies: []
+...
