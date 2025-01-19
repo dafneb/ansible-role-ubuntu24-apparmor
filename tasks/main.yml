@@ -1,2 +1,89 @@
 ---
 # tasks file for ubuntu24-apparmor
+- name: Check OS version and family
+  ansible.builtin.fail:
+    msg: "This role can only be run against Ubuntu 24. {{ ansible_facts.distribution }} {{ ansible_facts.distribution_major_version }} is not supported."
+  when:
+    - ansible_facts.distribution == 'Ubuntu'
+    - ansible_facts.distribution_major_version is version_compare('24', '!=')
+  tags:
+    - always
+
+- name: "Run update_cache"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: "{{ updates_cache_valid_time }}"
+  tags:
+    - always
+
+- name: "Install packages"
+  ansible.builtin.apt:
+    pkg: "{{ required_packages }}"
+  tags:
+    - always
+
+- name: "Adjust GRUB file - apparmor=1 (replace)"
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: '^GRUB_CMDLINE_LINUX=\"(.*)apparmor=\d(.*)\"$'
+    line: 'GRUB_CMDLINE_LINUX="\1apparmor=1\2"'
+    backrefs: true
+  register: grub_apparmor_replaced
+  notify: Grub update
+  tags:
+    - always
+
+- name: "Adjust GRUB file - apparmor=1 (create)"
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX=\".*)\"$'
+    line: '\1 apparmor=1"'
+    backrefs: true
+  when:
+    - grub_apparmor_replaced is not changed
+  notify: Grub update
+  tags:
+    - always
+
+- name: "Adjust GRUB file - security=apparmor (replace)"
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: '^GRUB_CMDLINE_LINUX=\"(.*)security=\w*(.*)\"$'
+    line: 'GRUB_CMDLINE_LINUX="\1security=apparmor\2"'
+    backrefs: true
+  register: grub_security_replaced
+  notify: Grub update
+  tags:
+    - always
+
+- name: "Adjust GRUB file - security=apparmor (create)"
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX=\".*)\"$'
+    line: '\1 security=apparmor"'
+    backrefs: true
+  when:
+    - grub_security_replaced is not changed
+  notify: Grub update
+  tags:
+    - always
+
+- name: "Set all profiles to complain mode"
+  ansible.builtin.command: aa-complain /ect/apparmor.d/*
+  changed_when: false
+  failed_when: false
+  when:
+    - apparmor_complaint_mode
+  tags:
+    - always
+
+- name: "Set all profiles to enforce mode"
+  ansible.builtin.command: aa-enforce
+  changed_when: false
+  failed_when: false
+  when:
+    - not apparmor_complaint_mode
+  tags:
+    - always
+
+...

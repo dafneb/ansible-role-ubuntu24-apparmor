@@ -18,7 +18,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: dafneb.rolename }
+         - { role: dafneb.ubuntu24-apparmor }
 
 License
 -------

@@ -1,2 +1,22 @@
 ---
 # defaults file for ubuntu24-apparmor
+
+## --------------------------------------------------------
+## Section: Required packages
+#
+updates_cache_valid_time: 3600
+required_packages:
+  - apparmor
+  - apparmor-utils
+## --------------------------------------------------------
+
+## --------------------------------------------------------
+## Section: Implementation options
+#
+# Select mode for AppArmor
+# true: complaint mode
+# false: enforce mode
+apparmor_complaint_mode: true
+## --------------------------------------------------------
+
+...

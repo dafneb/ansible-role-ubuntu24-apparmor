@@ -1,2 +1,8 @@
 ---
 # handlers file for ubuntu24-apparmor
+- name: Grub update
+  ansible.builtin.command: update-grub
+  changed_when: true
+  failed_when: false
+
+...
