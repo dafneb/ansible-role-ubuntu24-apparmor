@@ -7,6 +7,7 @@ AppArmor on Ubuntu 24
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/dafneb/ansible-role-ubuntu24-apparmor)
 ![GitHub contributors](https://img.shields.io/github/contributors/dafneb/ansible-role-ubuntu24-apparmor)
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/dafneb/ansible-role-ubuntu24-apparmor/ansible-lint.yml?label=ansible-lint)
 
 An Ansible role to install AppArmor on Ubuntu 24.
 
