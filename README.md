@@ -7,6 +7,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/dafneb/ansible-role-ubuntu24-apparmor)
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/dafneb/ansible-role-ubuntu24-apparmor/ansible-lint.yml?label=ansible-lint)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/dafneb/ansible-role-ubuntu24-apparmor/codeql.yml?label=CodeQL)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/dafneb/ansible-role-ubuntu24-apparmor/badge)](https://scorecard.dev/viewer/?uri=github.com/dafneb/ansible-role-ubuntu24-apparmor)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/dafneb/ansible-role-ubuntu24-apparmor/main.svg)](https://results.pre-commit.ci/latest/github/dafneb/ansible-role-ubuntu24-apparmor/main)
 
 An Ansible role to install AppArmor on Ubuntu 24.
 
