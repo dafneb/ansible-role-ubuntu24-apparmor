@@ -1,7 +1,6 @@
-AppArmor on Ubuntu 24
-=====================
+# AppArmor on Ubuntu 24 (noble)
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/dafneb/.github/blob/main/.github/CODE_OF_CONDUCT.md) 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/dafneb/.github/blob/main/.github/CODE_OF_CONDUCT.md)
 [![License](https://img.shields.io/badge/License-MIT-4baaaa.svg)](https://github.com/dafneb/.github/blob/main/LICENSE)
 ![GitHub Release](https://img.shields.io/github/v/release/dafneb/ansible-role-ubuntu24-apparmor)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/dafneb/ansible-role-ubuntu24-apparmor)
@@ -11,25 +10,20 @@ AppArmor on Ubuntu 24
 
 An Ansible role to install AppArmor on Ubuntu 24.
 
-Requirements
-------------
+## Requirements
 
 No special requirements. Some tasks require "privileged role" at system. So, use [become](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html#using-become) option at your inventory list.
 
-Role Variables
---------------
+## Role Variables
 
 This role is designed so the end user should not have to edit the tasks themselves. All customizing should be done via the defaults/main.yml file or with extra vars within the project, job, workflow, etc.
 
-Example Playbook
-----------------
+## Example Playbook
 
     - hosts: servers
       roles:
          - { role: dafneb.ubuntu24-apparmor }
 
-License
--------
+## License
 
-MIT
-
+[MIT](LICENSE)
